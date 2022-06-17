@@ -1,9 +1,10 @@
 import joblib
+import os
 import pandas as pd
 from flask import Flask, request, Response
 from healthinsurance.HealthInsurance import HealthInsurance
 
-path = '/mnt/c/users/jhonatan/desktop/comunidade_ds/repos/pa004_health_insurance_cross_sell/health_insurance_cross_sell/'
+path = ''
 model = joblib.load(path + 'models/xgb_model.joblib')
 
 # Inicializando API
@@ -33,7 +34,8 @@ def healthinsurance_predict():
         return df_response
     
     else:
-        return Response( '{}', status=200, mimetype='application/json' )
+        return Response('{}', status=200, mimetype='application/json')
     
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)

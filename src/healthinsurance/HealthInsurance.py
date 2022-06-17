@@ -4,13 +4,13 @@ import joblib
 
 class HealthInsurance:
     def __init__(self):
-        self.home_path = '/mnt/c/users/jhonatan/desktop/comunidade_ds/repos/pa004_health_insurance_cross_sell/health_insurance_cross_sell/'
-        self.fe_policy_sales_channel = joblib.load(self.home_path + 'src/features/fe_policy_sales_channel.joblib')
-        self.mms_age = joblib.load(self.home_path + 'src/features/mms_age.joblib')
-        self.mms_vintage = joblib.load(self.home_path + 'src/features/mms_vintage.joblib')
-        self.ss_annual_premium = joblib.load(self.home_path + 'src/features/ss_annual_premium.joblib')
-        self.target_encode_gender = joblib.load(self.home_path + 'src/features/target_encode_gender.joblib')
-        self.target_encode_region_code = joblib.load(self.home_path + 'src/features/target_encode_region_code.joblib')
+        self.home_path = ''
+        self.fe_policy_sales_channel = joblib.load(self.home_path + 'features/fe_policy_sales_channel.joblib')
+        self.mms_age = joblib.load(self.home_path + 'features/mms_age.joblib')
+        self.mms_vintage = joblib.load(self.home_path + 'features/mms_vintage.joblib')
+        self.ss_annual_premium = joblib.load(self.home_path + 'features/ss_annual_premium.joblib')
+        self.target_encode_gender = joblib.load(self.home_path + 'features/target_encode_gender.joblib')
+        self.target_encode_region_code = joblib.load(self.home_path + 'features/target_encode_region_code.joblib')
         
     def data_cleaning(self, data):
         # Renomear as colunas
