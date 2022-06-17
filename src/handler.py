@@ -15,7 +15,7 @@ def healthinsurance_predict():
     test_json = request.get_json()
     if test_json: # Há dados
         if isinstance(test_json, dict): # Exemplo único
-            test_raw = pd.DataFrame(test_json, columns=test_json[0])
+            test_raw = pd.DataFrame(test_json, index=test_json[0])
         else: #Multiplos exemplos
             test_raw = pd.DataFrame(test_json, columns=test_json[0].keys())
         
