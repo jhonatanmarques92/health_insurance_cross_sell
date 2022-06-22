@@ -27,7 +27,7 @@ class HealthInsurance:
         data['annual_premium'] = self.ss_annual_premium.transform(data[['annual_premium']])
         
         # Rescaling
-        data['vintage'] = self.mms_age.transform(data[['vintage']])
+        data['age'] = self.mms_age.transform(data[['age']])
         data['vintage'] = self.mms_vintage.transform(data[['vintage']])
         
         # Encoding
