@@ -6,7 +6,7 @@ from flask import Flask, request, Response
 from healthinsurance.HealthInsurance import HealthInsurance
 
 path = ''
-model = joblib.load(path + 'models/xgb_model.joblib')
+model = joblib.load(path + 'models/xgb_model2.joblib')
 
 # Inicializando API
 app = Flask(__name__)
@@ -20,17 +20,23 @@ def healthinsurance_predict():
         else: #Multiplos exemplos
             test_raw = pd.DataFrame(test_json, columns=test_json[0].keys())
         
+        # Criando uma cópia do dataframe Raw
+        raw_copy = test_raw.copy()
+
         # Instanciando a classe HealthInsurance
         pipeline = HealthInsurance()
         
         # Data Cleaning
         df1 = pipeline.data_cleaning(test_raw)
-        
+        print(df1)
         # Data Preparation
         df2 = pipeline.data_preparation(df1)
-        
+        print('parte do df2')
+        print(df2)
+        print('parte do raw')
+        print(test_raw)
         # Predição
-        df_response = pipeline.get_prediction(model, test_raw, df2)
+        df_response = pipeline.get_prediction(model, raw_copy, df2)
         
         return df_response
     
