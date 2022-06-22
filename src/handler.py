@@ -28,13 +28,10 @@ def healthinsurance_predict():
         
         # Data Cleaning
         df1 = pipeline.data_cleaning(test_raw)
-        print(df1)
+
         # Data Preparation
         df2 = pipeline.data_preparation(df1)
-        print('parte do df2')
-        print(df2)
-        print('parte do raw')
-        print(test_raw)
+
         # Predição
         df_response = pipeline.get_prediction(model, raw_copy, df2)
         
