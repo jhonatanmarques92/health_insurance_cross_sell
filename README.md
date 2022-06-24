@@ -103,6 +103,9 @@ Para solucionar o problema, foi utilizado o CRISP-DS, uma metodologia cíclica p
 <p align="center"><img src="https://github.com/jhonatanmarques92/health_insurance_cross_sell/blob/main/img/h7.png" width="820" height="520"></p>
 
 ## Modelos de Machine Learning aplicados
+Os 304887 clientes foram divididos em:
+  - 243909 para treino
+  - 60978 para teste
 Utilizado 5 algoritmos para o treinamento do modelo (Logistic Regression, KNN, Random Forest, Extra Trees e XGBoost).  
 Abaixo a avaliação de cada modelo treinado.  
 
@@ -170,10 +173,39 @@ Precision e recall de cada modelo, com cross validation em 3 folds e top 30%, cu
 <p align="center"><img src="https://github.com/jhonatanmarques92/health_insurance_cross_sell/blob/main/img/lift.png" width="820" height="520"></p>
 
 - Fine tunning do modelo XGBoost, com cross validation de 3 folds e top 30%
+
 |                                       Parâmetros                                                         |        Precision         |             Recall       |
 | ---------------------------------------------------------------------------------------------------------| ------------------------ | ------------------------ |
 | n_estimators: 120, eta: 0.01, max_depth: 5, subsample: 0.5, colsample_bytree: 0.7, min_child_weight: 3   | mean: 0.32 / std: +- 0.0 | mean: 0.78 / std: +- 0.0 |
 | n_estimators: 160, eta: 0.03, max_depth: 10, subsample: 0.5, colsample_bytree: 0.5, min_child_weight: 8  | mean: 0.32 / std: +- 0.0 | mean: 0.77 / std: +- 0.0 |
 | n_estimators: 300, eta: 0.01, max_depth: 5, subsample: 0.5, colsample_bytree: 0.7, min_child_weight: 3   | mean: 0.32 / std: +- 0.0 | mean: 0.78 / std: +- 0.0 |
 
+Após os treinamentos, foi utilizado como modelo final o XGBoost com os parâmetros padrão.
+
 ## Perfomance do modelo escolhido
+Para responder as duas perguntas de negócio, foram utilizados os 60978 clientes dos dados de teste.  
+
+- **Qual a porcentagem de vendas efetuadas com as 20 mil ligações?**  
+  - Dos 60978 clientes, após as 20 mil ligações, o modelo ja vai ter atingido quase 82% da base contra 32,8% caso seja feito uma escolha aleatória, sendo 2,5 vezes melhor.
+
+**Curva de ganho cumulativo**
+<p align="center"><img src="https://github.com/jhonatanmarques92/health_insurance_cross_sell/blob/main/img/curva_ganho_20k.png" width="820" height="520"></p>
+
+**Curva lift**
+<p align="center"><img src="https://github.com/jhonatanmarques92/health_insurance_cross_sell/blob/main/img/lift_20k.png" width="820" height="520"></p>
+
+- **Qual a porcentagem de vendas efetuadas caso o time de vendas consiga fazer 30 mil ligações?**
+  - Dos 60978 clientes, após as 30 mil ligações, o modelo ja vai ter atingido quase 99% da base contra 49,2% caso seja feito uma escolha aleatória, sendo 2 vezes melhor.
+
+**Curva de ganho cumulativo**
+<p align="center"><img src="https://github.com/jhonatanmarques92/health_insurance_cross_sell/blob/main/img/curva_ganho_30k.png" width="820" height="520"></p>
+
+**Curva lift**
+<p align="center"><img src="https://github.com/jhonatanmarques92/health_insurance_cross_sell/blob/main/img/lift_30k.png" width="820" height="520"></p>
+
+## Modelo em produção
+O modelo foi hospedado no Heroku e criado um botão no Google Sheets, através do apps script com JavaScript, para que possa ser feito o ranqueamento.   
+
+https://user-images.githubusercontent.com/49005736/175660666-3bae9530-8716-4123-a2c9-5b4a9aa05aa1.mp4
+
+
