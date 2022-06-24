@@ -101,3 +101,79 @@ Para solucionar o problema, foi utilizado o CRISP-DS, uma metodologia cíclica p
 | Menor de 40 anos |     1    | 97853                | 58,457743 % |
 
 <p align="center"><img src="https://github.com/jhonatanmarques92/health_insurance_cross_sell/blob/main/img/h7.png" width="820" height="520"></p>
+
+## Modelos de Machine Learning aplicados
+Utilizado 5 algoritmos para o treinamento do modelo (Logistic Regression, KNN, Random Forest, Extra Trees e XGBoost).  
+Abaixo a avaliação de cada modelo treinado.  
+
+**Logistic Regression**  
+Sem cross validation
+
+| Top % | Precision | Recall |
+| ----- | --------- | ------ |
+| 30 %  | 0.28      | 0.68   |
+| 50 %  | 0.24      | 0.99   |
+| 70 %  | 0.18      | 1.0    |
+
+**KNN**  
+Sem cross validation
+
+| Top % | Precision | Recall |
+| ----- | --------- | ------ |
+| 30 %  | 0.27      | 0.67   |
+| 50 %  | 0.21      | 0.83   |
+| 70 %  | 0.16      | 0.9    |
+
+**Random Forest**  
+Sem cross validation
+
+| Top % | Precision | Recall |
+| ----- | --------- | ------ |
+| 30 %  | 0.3      | 0.73   |
+| 50 %  | 0.24      | 0.98   |
+| 70 %  | 0.18      | 0.99    |
+
+**Extra Trees**  
+Sem cross validation
+
+| Top % | Precision | Recall |
+| ----- | --------- | ------ |
+| 30 %  | 0.29      | 0.71   |
+| 50 %  | 0.24      | 0.97   |
+| 70 %  | 0.17      | 0.99    |
+
+**XGBoost**  
+Sem cross validation
+
+| Top % | Precision | Recall |
+| ----- | --------- | ------ |
+| 30 %  | 0.32      | 0.77   |
+| 50 %  | 0.24      | 0.99   |
+| 70 %  | 0.18      | 1.0    |
+
+- **Comparação dos modelos**
+Precision e recall de cada modelo, com cross validation em 3 folds e top 30%, curva de ganho cumulativo e curva lift
+
+** Precision e recall**  
+| model_name     |          Precision        |          Recall            |
+| -------------- | ------------------------- | -------------------------- |
+| XGBoost        | mean: 0.32 / std: +- 0.0	 | mean: 0.78 / std: +- 0.0   |
+| Random Forest  | mean: 0.3 / std: +- 0.0   | mean: 0.73 / std: +- 0.0  |
+| Extra Trees    | mean: 0.29 / std: +- 0.0 | mean: 0.72 / std: +- 0.0    |
+| Logistic Regression | mean: 0.28 / std: +- 0.0 | mean: 0.68 / std: +- 0.01 |
+| KNN            | mean: 0.27 / std: +- 0.0  | mean: 0.67 / std: +- 0.0   |
+
+**Curva de ganho cumulativo**
+<p align="center"><img src="https://github.com/jhonatanmarques92/health_insurance_cross_sell/blob/main/img/curva_ganho.png" width="820" height="520"></p>
+
+**Curva lift**
+<p align="center"><img src="https://github.com/jhonatanmarques92/health_insurance_cross_sell/blob/main/img/lift.png" width="820" height="520"></p>
+
+- Fine tunning do modelo XGBoost, com cross validation de 3 folds e top 30%
+|                                       Parâmetros                                                         |        Precision         |             Recall       |
+| ---------------------------------------------------------------------------------------------------------| ------------------------ | ------------------------ |
+| n_estimators: 120, eta: 0.01, max_depth: 5, subsample: 0.5, colsample_bytree: 0.7, min_child_weight: 3   | mean: 0.32 / std: +- 0.0 | mean: 0.78 / std: +- 0.0 |
+| n_estimators: 160, eta: 0.03, max_depth: 10, subsample: 0.5, colsample_bytree: 0.5, min_child_weight: 8  | mean: 0.32 / std: +- 0.0 | mean: 0.77 / std: +- 0.0 |
+| n_estimators: 300, eta: 0.01, max_depth: 5, subsample: 0.5, colsample_bytree: 0.7, min_child_weight: 3   | mean: 0.32 / std: +- 0.0 | mean: 0.78 / std: +- 0.0 |
+
+## Perfomance do modelo escolhido
