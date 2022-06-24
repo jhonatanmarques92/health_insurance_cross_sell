@@ -208,4 +208,11 @@ O modelo foi hospedado no Heroku e criado um botão no Google Sheets, através d
 
 https://user-images.githubusercontent.com/49005736/175660666-3bae9530-8716-4123-a2c9-5b4a9aa05aa1.mp4
 
+## Conclusão
+Com a automatização no processo de ranquamento, há mais chances de fechar as vendas com o menor número de ligações, visto que, nos testes, as 20 mil ligações já atingia quase 82% dos clientes que fechariam o negócio.
+Utilizandado o Google Sheets para o ranqueamento, uma ferramenta de fácil uso.
 
+## Próximos passos
+Balancear as classes, aumentando o número de features da classe minoritária, utilizando técnicas de balanceamento como o Smote.  
+Treinar outros modelos como SVM, Neural Network, entre outros.  
+Testar outros encoders e rescaling.
