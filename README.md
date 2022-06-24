@@ -27,3 +27,31 @@ Os dados foram retirados do Kaggle: https://www.kaggle.com/datasets/anmolkumar/h
 | Gender	| Gênero do cliente |
 | Age	    | Idade do cliente |
 | Driving_License | Se o cliente possui ou não habilitação |
+| Region_Code | Código único da ragião |
+| Previously_Insured | Se o cliente possui ou não seguro veicular |
+| Vehicle_Age | Idade do veículo |
+| Vehicle_Damage | Se o veículo do cliente já foi ou não danificado |
+| Annual_Premium | Valor que o cliente precisa pagar como prêmio no ano |
+| PolicySalesChannel | Côdigo do canal de divulgação ao cliente |
+| Vintage | Número de dias que o cliente é associado |
+| Response | Resposta se o cliente estaria ou não interessado no produto |
+
+## Estratégia de solução
+Para solucionar o problema, foi utilizado o CRISP-DS, uma metodologia cíclica para o andamento de cada etapa do desenvolvimento do projeto.  
+<p align="center"><img src="https://github.com/jhonatanmarques92/rossmann_sales_prediction/blob/main/img/crisp-ds.png" width="650" height="400"></p>
+
+- **Questão e entendimento do negócio:** Recebimento do problema de negócio, onde se dará início no planejamento da solução e nas respostas.
+- **Coleta dos dados:** Arquivos em csv, disponível no Kaggle.
+- **Descrição dos dados:** Renomear as colunas e fazer uma análise descritiva.
+- **Feature engineering:** Criação do mapa mental e a lista de hipóteses.
+- **Análise exploratória dos dados:** 
+  - Análise univariada: Verificar distribuição e outliers das features.
+  - Análise bivariada: Respondendo as hipóteses, procurando insights.
+  - Análise multivariada: Criando um mapa de calor com as correlações entre as features.
+- **Preparação dos dados:** Ápos realizar a separação dos dados de treino e teste, foi aplicado as técnicas abaixo.
+  - Normalização para features numéricas com a distribuição normal.
+  - Rescaling para features numéricas que não possuem uma distribuição normal.
+  - Encoding para features categóricas.
+- **Seleção de features:** Utilizado o feature_importances de um algoritmo ensamble (Extra Tree Classifier), pois o Boruta retornou apenas duas features como relevante, para selecionar apenas as mais importantes.
+- **Modelos de Machine Learning:** Utilizado 5 algoritmos para o treinamento do modelo (Logistic Regression, KNN, Random Forest, Extra Trees e XGBoost), utilizando cross validation e analisando algumas métricas (precision top K, recall top K, curva de ganho cumulativo e curva lift).
+- **Fine Tunning:** Testando parâmentros diferentes no melhor modelo, tentando aumentar a perfomance.
