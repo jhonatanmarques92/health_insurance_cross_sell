@@ -55,3 +55,49 @@ Para solucionar o problema, foi utilizado o CRISP-DS, uma metodologia cíclica p
 - **Seleção de features:** Utilizado o feature_importances de um algoritmo ensamble (Extra Tree Classifier), pois o Boruta retornou apenas duas features como relevante, para selecionar apenas as mais importantes.
 - **Modelos de Machine Learning:** Utilizado 5 algoritmos para o treinamento do modelo (Logistic Regression, KNN, Random Forest, Extra Trees e XGBoost), utilizando cross validation e analisando algumas métricas (precision top K, recall top K, curva de ganho cumulativo e curva lift).
 - **Fine Tunning:** Testando parâmentros diferentes no melhor modelo, tentando aumentar a perfomance.
+- **Perfomance do modelo:** Respondendo as perguntas de negócio utilizando as métricas.
+
+## Top 3 insights
+- Mais de 40% de homens e mulheres possuem seguro veicular.
+  - Verdadeiro, pois 50,25% das mulheres possuem seguro veicular, enquanto apenas 42% do homens possuem.
+
+**Mulheres**
+| Gender | Previously_Insured | Quantidade de clientes | Porcentagem |
+| ------ | ------------------ | ---------------------- | ----------- |
+| Female |         0          | 69618                  | 49,77692 %  |
+| Female |         1          | 70242                  | 50,22308 %  |
+
+**Homens**
+| Gender | Previously_Insured | Quantidade de clientes | Porcentagem |
+| ------ | ------------------ | ---------------------- | ----------- |
+| Male   |         0          | 95645                  | 57,957183 % |
+| Male   |         1          | 69382                  | 42,042817 % |
+
+<p align="center"><img src="https://github.com/jhonatanmarques92/health_insurance_cross_sell/blob/main/img/h4.png" width="820" height="520"></p> 
+
+- Pessoas com menos de 40 anos se acidentam 20% mais.
+  - Falso, pessoas com menos de 40 anos se acidentam 18,74% menos
+
+| Idade  | vehicle_damage     | Quantidade de clientes | Porcentagem |
+| ------ | ------------------ | ---------------------- | ----------- |
+| Maior de 40 anos |     Yes    | 91635                | 59,415667 % |
+| Menor de 40 anos |     Yes    | 62592                | 40,584333 % |
+
+<p align="center"><img src="https://github.com/jhonatanmarques92/health_insurance_cross_sell/blob/main/img/h5.png" width="820" height="520"></p>
+
+- Menos de 40% das pessoas com menos de 40 anos dirigem sem seguro no veículo, enquanto mais de 70% das pessoas com mais de 40 anos possuem seguro.
+  - Falso, pois 41,53% das pessoas com menos de 40 anos não possuem seguro, 69,6% das pessoas com mais de 40 anos não possuem.
+
+**Maior de 40 anos**
+| Idade  | previously_insured     | Quantidade de clientes | Porcentagem |
+| ------ | ------------------ | ---------------------- | ----------- |
+| Maior de 40 anos |     0    | 95725                | 69,620207 % |
+| Maior de 40 anos |     1    | 41771                | 30,379793 % |
+
+**Menor de 40 anos**
+| Idade  | previously_insured     | Quantidade de clientes | Porcentagem |
+| ------ | ------------------ | ---------------------- | ----------- |
+| Menor de 40 anos |     0    | 69538                | 41,542257 % |
+| Menor de 40 anos |     1    | 97853                | 58,457743 % |
+
+<p align="center"><img src="https://github.com/jhonatanmarques92/health_insurance_cross_sell/blob/main/img/h7.png" width="820" height="520"></p>
