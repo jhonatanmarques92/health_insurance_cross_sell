@@ -182,7 +182,7 @@ Precision e recall de cada modelo, com cross validation em 3 folds e top 30%, cu
 
 Após os treinamentos, foi utilizado como modelo final o XGBoost com os parâmetros padrão.
 
-## Perfomance do modelo escolhido
+## Resultado de negócio
 Para responder as duas perguntas de negócio, foram utilizados os 60978 clientes dos dados de teste.  
 
 - **Qual a porcentagem de vendas efetuadas com as 20 mil ligações?**  
